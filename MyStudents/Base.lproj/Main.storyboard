@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tab-bar-controller">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tab-bar-controller">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,11 +11,12 @@
         <!--Main Tab Bar Controller-->
         <scene sceneID="scene-tab-bar">
             <objects>
-                <tabBarController id="tab-bar-controller" customClass="MainTabBarController" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="tab-bar-controller" customClass="MainTabBarController" customModule="MyStudents" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="main-tab-bar">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <tabBarAppearance key="standardAppearance"/>
                     </tabBar>
                     <connections>
                         <segue destination="nav-dashboard" kind="relationship" relationship="viewControllers" id="segue-tab-dashboard"/>
@@ -30,13 +31,13 @@
             </objects>
             <point key="canvasLocation" x="-1100" y="-100"/>
         </scene>
-        <!--Dashboard Navigation Controller-->
+        <!--Dashboard-->
         <scene sceneID="scene-nav-dashboard">
             <objects>
                 <navigationController id="nav-dashboard" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Dashboard" id="tab-dashboard"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bar-dashboard">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -47,13 +48,13 @@
             </objects>
             <point key="canvasLocation" x="-250" y="-800"/>
         </scene>
-        <!--Students Navigation Controller-->
+        <!--Students-->
         <scene sceneID="scene-nav-students">
             <objects>
                 <navigationController id="nav-students" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Students" id="tab-students"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bar-students">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -64,13 +65,13 @@
             </objects>
             <point key="canvasLocation" x="-250" y="-500"/>
         </scene>
-        <!--Batches Navigation Controller-->
+        <!--Batches-->
         <scene sceneID="scene-nav-batches">
             <objects>
                 <navigationController id="nav-batches" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Batches" id="tab-batches"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bar-batches">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -81,13 +82,13 @@
             </objects>
             <point key="canvasLocation" x="-250" y="-200"/>
         </scene>
-        <!--Attendance Navigation Controller-->
+        <!--Attendance-->
         <scene sceneID="scene-nav-attendance">
             <objects>
                 <navigationController id="nav-attendance" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Attendance" id="tab-attendance"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bar-attendance">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -98,13 +99,13 @@
             </objects>
             <point key="canvasLocation" x="-250" y="100"/>
         </scene>
-        <!--Finance Navigation Controller-->
+        <!--Finance-->
         <scene sceneID="scene-nav-finance">
             <objects>
                 <navigationController id="nav-finance" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Finance" id="tab-finance"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bar-finance">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -115,13 +116,13 @@
             </objects>
             <point key="canvasLocation" x="-250" y="400"/>
         </scene>
-        <!--More Navigation Controller-->
+        <!--More-->
         <scene sceneID="scene-nav-more">
             <objects>
                 <navigationController id="nav-more" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="More" id="tab-more"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bar-more">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -135,12 +136,12 @@
         <!--Dashboard-->
         <scene sceneID="scene-dashboard">
             <objects>
-                <viewController id="vc-dashboard" customClass="DashboardViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vc-dashboard" customClass="DashboardViewController" customModule="MyStudents" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="view-dashboard">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <viewLayoutGuide key="safeArea" id="safe-dashboard"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Dashboard" id="nav-item-dashboard"/>
                 </viewController>
@@ -151,12 +152,12 @@
         <!--Students-->
         <scene sceneID="scene-students">
             <objects>
-                <viewController id="vc-students" customClass="StudentsViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vc-students" customClass="StudentsViewController" customModule="MyStudents" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="view-students">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <viewLayoutGuide key="safeArea" id="safe-students"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Students" id="nav-item-students"/>
                 </viewController>
@@ -167,12 +168,12 @@
         <!--Batches-->
         <scene sceneID="scene-batches">
             <objects>
-                <viewController id="vc-batches" customClass="BatchesViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vc-batches" customClass="BatchesViewController" customModule="MyStudents" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="view-batches">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <viewLayoutGuide key="safeArea" id="safe-batches"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Batches" id="nav-item-batches"/>
                 </viewController>
@@ -183,12 +184,12 @@
         <!--Attendance-->
         <scene sceneID="scene-attendance">
             <objects>
-                <viewController id="vc-attendance" customClass="AttendanceViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vc-attendance" customClass="AttendanceViewController" customModule="MyStudents" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="view-attendance">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <viewLayoutGuide key="safeArea" id="safe-attendance"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Attendance" id="nav-item-attendance"/>
                 </viewController>
@@ -199,12 +200,12 @@
         <!--Finance-->
         <scene sceneID="scene-finance">
             <objects>
-                <viewController id="vc-finance" customClass="FinanceViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vc-finance" customClass="FinanceViewController" customModule="MyStudents" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="view-finance">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <viewLayoutGuide key="safeArea" id="safe-finance"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Finance" id="nav-item-finance"/>
                 </viewController>
@@ -215,12 +216,12 @@
         <!--More-->
         <scene sceneID="scene-more">
             <objects>
-                <viewController id="vc-more" customClass="MoreViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vc-more" customClass="MoreViewController" customModule="MyStudents" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="view-more">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <viewLayoutGuide key="safeArea" id="safe-more"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="More" id="nav-item-more"/>
                 </viewController>
