@@ -1,4 +1,88 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23507" systemVersion="24F74" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
+    <entity name="AttendanceRecord" representedClassName="AttendanceRecord" syncable="YES">
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="status" attributeType="String"/>
+        <relationship name="batch" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Batch" inverseName="attendanceRecords" inverseEntity="Batch"/>
+        <relationship name="student" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="attendanceRecords" inverseEntity="Student"/>
+    </entity>
+    <entity name="Batch" representedClassName="Batch" syncable="YES">
+        <attribute name="fee" attributeType="Decimal" defaultValueString="0"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="schedule" optional="YES" attributeType="String"/>
+        <attribute name="subject" optional="YES" attributeType="String"/>
+        <relationship name="attendanceRecords" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="AttendanceRecord" inverseName="batch" inverseEntity="AttendanceRecord"/>
+        <relationship name="examResults" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ExamResult" inverseName="batch" inverseEntity="ExamResult"/>
+        <relationship name="expenses" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Expense" inverseName="batch" inverseEntity="Expense"/>
+        <relationship name="homework" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Homework" inverseName="batch" inverseEntity="Homework"/>
+        <relationship name="payments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Payment" inverseName="batch" inverseEntity="Payment"/>
+        <relationship name="students" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Student" inverseName="batches" inverseEntity="Student"/>
+    </entity>
+    <entity name="ExamResult" representedClassName="ExamResult" syncable="YES">
+        <attribute name="examDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="examName" attributeType="String"/>
+        <attribute name="grade" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="marksObtained" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="subject" optional="YES" attributeType="String"/>
+        <attribute name="totalMarks" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="batch" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Batch" inverseName="examResults" inverseEntity="Batch"/>
+        <relationship name="student" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="examResults" inverseEntity="Student"/>
+    </entity>
+    <entity name="Expense" representedClassName="Expense" syncable="YES">
+        <attribute name="amount" attributeType="Decimal" defaultValueString="0"/>
+        <attribute name="category" optional="YES" attributeType="String"/>
+        <attribute name="expenseDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="batch" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Batch" inverseName="expenses" inverseEntity="Batch"/>
+    </entity>
+    <entity name="Homework" representedClassName="Homework" syncable="YES">
+        <attribute name="assignedDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="details" optional="YES" attributeType="String"/>
+        <attribute name="dueDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="status" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="batch" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Batch" inverseName="homework" inverseEntity="Batch"/>
+    </entity>
+    <entity name="Payment" representedClassName="Payment" syncable="YES">
+        <attribute name="amount" attributeType="Decimal" defaultValueString="0"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="month" attributeType="String"/>
+        <attribute name="paymentDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="status" attributeType="String"/>
+        <relationship name="batch" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Batch" inverseName="payments" inverseEntity="Batch"/>
+        <relationship name="student" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="payments" inverseEntity="Student"/>
+    </entity>
+    <entity name="Student" representedClassName="Student" syncable="YES">
+        <attribute name="admissionDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="classNameValue" optional="YES" attributeType="String" renamingIdentifier="className"/>
+        <attribute name="fullName" attributeType="String"/>
+        <attribute name="guardianName" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isArchived" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="monthlyFee" attributeType="Decimal" defaultValueString="0"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String"/>
+        <attribute name="photoPath" optional="YES" attributeType="String"/>
+        <attribute name="school" optional="YES" attributeType="String"/>
+        <relationship name="attendanceRecords" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="AttendanceRecord" inverseName="student" inverseEntity="AttendanceRecord"/>
+        <relationship name="batches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Batch" inverseName="students" inverseEntity="Batch"/>
+        <relationship name="examResults" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ExamResult" inverseName="student" inverseEntity="ExamResult"/>
+        <relationship name="payments" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Payment" inverseName="student" inverseEntity="Payment"/>
+    </entity>
+    <elements>
+        <element name="Student" positionX="-342" positionY="-162" width="128" height="254"/>
+        <element name="Batch" positionX="-126" positionY="-162" width="128" height="224"/>
+        <element name="AttendanceRecord" positionX="108" positionY="-162" width="128" height="119"/>
+        <element name="Payment" positionX="306" positionY="-162" width="128" height="134"/>
+        <element name="Expense" positionX="-342" positionY="198" width="128" height="134"/>
+        <element name="Homework" positionX="-126" positionY="198" width="128" height="134"/>
+        <element name="ExamResult" positionX="108" positionY="198" width="128" height="164"/>
+    </elements>
 </model>

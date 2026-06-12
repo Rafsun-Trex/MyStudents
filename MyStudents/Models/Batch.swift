@@ -1,9 +1,28 @@
+import CoreData
 import Foundation
 
-struct Batch: Identifiable, Equatable {
-    let id: UUID
-    let name: String
-    let subjectName: String?
-    let scheduleDescription: String?
-    let createdAt: Date
+@objc(Batch)
+final class Batch: NSManagedObject, Identifiable {
+    @NSManaged var id: UUID
+    @NSManaged var name: String
+    @NSManaged var subject: String?
+    @NSManaged var schedule: String?
+    @NSManaged var fee: Decimal
+    @NSManaged var students: Set<Student>
+    @NSManaged var attendanceRecords: Set<AttendanceRecord>
+    @NSManaged var payments: Set<Payment>
+    @NSManaged var expenses: Set<Expense>
+    @NSManaged var homework: Set<Homework>
+    @NSManaged var examResults: Set<ExamResult>
+
+    override func awakeFromInsert() {
+        super.awakeFromInsert()
+        id = UUID()
+        name = ""
+        fee = .zero
+    }
+
+    @nonobjc class func fetchRequest() -> NSFetchRequest<Batch> {
+        NSFetchRequest<Batch>(entityName: "Batch")
+    }
 }
