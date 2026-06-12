@@ -5,7 +5,7 @@ import Foundation
 final class Expense: NSManagedObject, Identifiable {
     @NSManaged var id: UUID
     @NSManaged var title: String
-    @NSManaged var amount: Decimal
+    @NSManaged var amount: NSDecimalNumber
     @NSManaged var expenseDate: Date
     @NSManaged var category: String?
     @NSManaged var notes: String?

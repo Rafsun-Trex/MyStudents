@@ -7,7 +7,7 @@ final class Batch: NSManagedObject, Identifiable {
     @NSManaged var name: String
     @NSManaged var subject: String?
     @NSManaged var schedule: String?
-    @NSManaged var fee: Decimal
+    @NSManaged var fee: NSDecimalNumber
     @NSManaged var students: Set<Student>
     @NSManaged var attendanceRecords: Set<AttendanceRecord>
     @NSManaged var payments: Set<Payment>

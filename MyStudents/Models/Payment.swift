@@ -11,7 +11,7 @@ enum PaymentStatus: String, CaseIterable {
 @objc(Payment)
 final class Payment: NSManagedObject, Identifiable {
     @NSManaged var id: UUID
-    @NSManaged var amount: Decimal
+    @NSManaged var amount: NSDecimalNumber
     @NSManaged var paymentDate: Date?
     @NSManaged var month: String
     @NSManaged var status: String

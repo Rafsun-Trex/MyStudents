@@ -10,7 +10,7 @@ final class Student: NSManagedObject, Identifiable {
     @NSManaged var school: String?
     @NSManaged private var classNameValue: String?
     @NSManaged var admissionDate: Date
-    @NSManaged var monthlyFee: Decimal
+    @NSManaged var monthlyFee: NSDecimalNumber
     @NSManaged var photoPath: String?
     @NSManaged var notes: String?
     @NSManaged var isArchived: Bool
