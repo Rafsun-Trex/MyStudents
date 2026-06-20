@@ -20,6 +20,7 @@ final class AddStudentViewController: UIViewController {
         title = viewModel.title
         configureNavigation()
         configureForm()
+        hideKeyboardWhenTappedAround()
     }
 
     private func configureNavigation() {

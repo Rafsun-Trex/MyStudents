@@ -1,18 +1,23 @@
 import UIKit
 
-final class EditStudentViewController: UIViewController {
+final class CreateBatchViewController: UIViewController {
     var onSave: (() -> Void)?
 
-    private let viewModel: EditStudentViewModel
-    private let formView = StudentFormView()
+    /// When `true` a Cancel button is shown and a successful save dismisses the
+    /// presented controller. When `false` the screen behaves as a pushed editor
+    /// and pops on save. Set before presenting/pushing.
+    var showsCancelButton = false
 
-    init(viewModel: EditStudentViewModel) {
+    private let viewModel: BatchFormViewModel
+    private let formView = BatchFormView()
+
+    init(viewModel: BatchFormViewModel) {
         self.viewModel = viewModel
-        super.init(nibName: "EditStudentViewController", bundle: nil)
+        super.init(nibName: "CreateBatchViewController", bundle: nil)
     }
 
     required init?(coder: NSCoder) {
-        fatalError("Use init(viewModel:) to create EditStudentViewController.")
+        fatalError("Use init(viewModel:) to create CreateBatchViewController.")
     }
 
     override func viewDidLoad() {
@@ -24,6 +29,13 @@ final class EditStudentViewController: UIViewController {
     }
 
     private func configureNavigation() {
+        if showsCancelButton {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(
+                barButtonSystemItem: .cancel,
+                target: self,
+                action: #selector(cancelTapped)
+            )
+        }
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .save,
             target: self,
@@ -46,11 +58,20 @@ final class EditStudentViewController: UIViewController {
         formView.configure(with: viewModel.initialFormData)
     }
 
+    @objc private func cancelTapped() {
+        dismiss(animated: true)
+    }
+
     @objc private func saveTapped() {
+        view.endEditing(true)
         do {
             try viewModel.save(formData: formView.formData)
             onSave?()
-            navigationController?.popViewController(animated: true)
+            if showsCancelButton {
+                dismiss(animated: true)
+            } else {
+                navigationController?.popViewController(animated: true)
+            }
         } catch {
             showError(error)
         }
