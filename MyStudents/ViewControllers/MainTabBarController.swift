@@ -40,9 +40,7 @@ final class MainTabBarController: UITabBarController {
         case .students:
             return StudentListViewController(viewModel: dependencyContainer.makeStudentsViewModel())
         case .batches:
-            let viewController = BatchesViewController(nibName: "BatchesViewController", bundle: nil)
-            viewController.viewModel = dependencyContainer.makeBatchesViewModel()
-            return viewController
+            return BatchListViewController(viewModel: dependencyContainer.makeBatchesViewModel())
         case .attendance:
             let viewController = AttendanceViewController(nibName: "AttendanceViewController", bundle: nil)
             viewController.viewModel = dependencyContainer.makeAttendanceViewModel()

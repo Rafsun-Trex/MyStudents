@@ -48,6 +48,7 @@ final class StudentFormView: UIScrollView {
     private func configure() {
         keyboardDismissMode = .interactive
         alwaysBounceVertical = true
+        enableKeyboardInsetAdjustment()
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
