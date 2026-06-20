@@ -42,9 +42,7 @@ final class MainTabBarController: UITabBarController {
         case .batches:
             return BatchListViewController(viewModel: dependencyContainer.makeBatchesViewModel())
         case .attendance:
-            let viewController = AttendanceViewController(nibName: "AttendanceViewController", bundle: nil)
-            viewController.viewModel = dependencyContainer.makeAttendanceViewModel()
-            return viewController
+            return AttendanceListViewController(viewModel: dependencyContainer.makeAttendanceViewModel())
         case .finance:
             let viewController = FinanceViewController(nibName: "FinanceViewController", bundle: nil)
             viewController.viewModel = dependencyContainer.makeFinanceViewModel()
