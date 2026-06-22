@@ -1,3 +1,4 @@
+import CoreData
 import Foundation
 
 /// A single student's status on a given day, used when persisting a batch's
@@ -8,6 +9,10 @@ struct AttendanceEntry {
 }
 
 protocol AttendanceRepositoryProtocol {
+    /// The Core Data context used for fetches and saves, exposed so view
+    /// controllers can subscribe to save notifications and refresh on change.
+    var managedObjectContext: NSManagedObjectContext { get }
+
     /// Batches that attendance can be taken for, sorted by name.
     func fetchBatches() throws -> [Batch]
     func batch(withID id: UUID) throws -> Batch?

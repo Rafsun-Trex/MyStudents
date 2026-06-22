@@ -1,3 +1,4 @@
+import CoreData
 import UIKit
 
 extension AttendanceStatus {
@@ -49,6 +50,10 @@ final class AttendanceViewModel: ScreenViewModel {
 
     init(repository: AttendanceRepositoryProtocol) {
         self.repository = repository
+    }
+
+    var managedObjectContext: NSManagedObjectContext {
+        repository.managedObjectContext
     }
 
     func loadBatches() throws -> [AttendanceBatchItem] {

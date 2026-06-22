@@ -44,9 +44,9 @@ final class MainTabBarController: UITabBarController {
         case .attendance:
             return AttendanceListViewController(viewModel: dependencyContainer.makeAttendanceViewModel())
         case .finance:
-            let viewController = FinanceViewController(nibName: "FinanceViewController", bundle: nil)
-            viewController.viewModel = dependencyContainer.makeFinanceViewModel()
-            return viewController
+            return FinanceDashboardViewController(
+                viewModel: dependencyContainer.makeFinanceDashboardViewModel()
+            )
         case .more:
             let viewController = MoreViewController(nibName: "MoreViewController", bundle: nil)
             viewController.viewModel = dependencyContainer.makeMoreViewModel()

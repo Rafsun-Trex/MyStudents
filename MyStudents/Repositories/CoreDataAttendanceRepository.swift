@@ -10,6 +10,10 @@ final class CoreDataAttendanceRepository: AttendanceRepositoryProtocol {
         self.calendar = calendar
     }
 
+    var managedObjectContext: NSManagedObjectContext {
+        persistenceService.viewContext
+    }
+
     func fetchBatches() throws -> [Batch] {
         let request = Batch.fetchRequest()
         request.sortDescriptors = [

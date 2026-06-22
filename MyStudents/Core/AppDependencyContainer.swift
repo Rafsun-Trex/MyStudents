@@ -50,8 +50,8 @@ final class AppDependencyContainer {
         AttendanceViewModel(repository: attendanceRepository)
     }
 
-    func makeFinanceViewModel() -> FinanceViewModel {
-        FinanceViewModel(repository: financeRepository)
+    func makeFinanceDashboardViewModel() -> FinanceDashboardViewModel {
+        FinanceDashboardViewModel(repository: financeRepository)
     }
 
     func makeMoreViewModel() -> MoreViewModel {

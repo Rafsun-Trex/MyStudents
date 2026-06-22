@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xcodebuild -project MyStudents.xcodeproj -scheme MyStudents -destination 'generic/platform=iOS Simulator' -configuration Debug build)"
+    ]
+  }
+}

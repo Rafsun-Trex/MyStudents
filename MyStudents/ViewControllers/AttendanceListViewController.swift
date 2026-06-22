@@ -1,3 +1,4 @@
+import CoreData
 import UIKit
 
 /// Lists every batch so the teacher can pick one and either take attendance for
@@ -17,6 +18,9 @@ final class AttendanceListViewController: UIViewController {
     private let emptyMessageLabel = UILabel()
     private let refreshControl = UIRefreshControl()
 
+    private var contextObserver: NSObjectProtocol?
+    private var pendingReload = false
+
     init(viewModel: AttendanceViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -26,6 +30,12 @@ final class AttendanceListViewController: UIViewController {
         fatalError("Use init(viewModel:) to create AttendanceListViewController.")
     }
 
+    deinit {
+        if let observer = contextObserver {
+            NotificationCenter.default.removeObserver(observer)
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = viewModel.title
@@ -33,12 +43,44 @@ final class AttendanceListViewController: UIViewController {
         configureTableView()
         configureEmptyState()
         configureDataSource()
+        observeContextChanges()
         loadBatches()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadBatches()
+    }
+
+    /// Re-fetches whenever the view context saves, so changes made in other
+    /// tabs (e.g. a new batch in the Batches tab) appear without needing a tab
+    /// switch. Reloads are coalesced through the main run loop to absorb
+    /// bursts (assign-students, edit-batch, etc.).
+    private func observeContextChanges() {
+        guard contextObserver == nil else { return }
+        let context = viewModel.managedObjectContext
+        contextObserver = NotificationCenter.default.addObserver(
+            forName: .NSManagedObjectContextDidSave,
+            object: nil,
+            queue: .main
+        ) { [weak self] notification in
+            guard
+                let self,
+                let savedContext = notification.object as? NSManagedObjectContext,
+                savedContext === context || savedContext.parent === context
+            else { return }
+            self.scheduleReload()
+        }
+    }
+
+    private func scheduleReload() {
+        guard !pendingReload else { return }
+        pendingReload = true
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            self.pendingReload = false
+            self.loadBatches()
+        }
     }
 
     private func configureTableView() {
