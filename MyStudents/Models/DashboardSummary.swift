@@ -1,15 +1,20 @@
 import Foundation
 
-struct DashboardSummary: Equatable {
-    let studentCount: Int
-    let batchCount: Int
-    let attendanceRecordsDueCount: Int
-    let outstandingPaymentCount: Int
+/// Aggregated metrics surfaced on the dashboard's stat cards.
+struct DashboardSummary {
+    let totalStudents: Int
+    let activeBatches: Int
+    let todaysClasses: Int
+    let duePayments: Int
+    let monthlyRevenue: NSDecimalNumber
+    let monthlyExpected: NSDecimalNumber
 
     static let empty = DashboardSummary(
-        studentCount: 0,
-        batchCount: 0,
-        attendanceRecordsDueCount: 0,
-        outstandingPaymentCount: 0
+        totalStudents: 0,
+        activeBatches: 0,
+        todaysClasses: 0,
+        duePayments: 0,
+        monthlyRevenue: .zero,
+        monthlyExpected: .zero
     )
 }

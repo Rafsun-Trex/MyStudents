@@ -34,9 +34,7 @@ final class MainTabBarController: UITabBarController {
     ) -> UIViewController {
         switch tab {
         case .dashboard:
-            let viewController = DashboardViewController(nibName: "DashboardViewController", bundle: nil)
-            viewController.viewModel = dependencyContainer.makeDashboardViewModel()
-            return viewController
+            return DashboardViewController(viewModel: dependencyContainer.makeDashboardViewModel())
         case .students:
             return StudentListViewController(viewModel: dependencyContainer.makeStudentsViewModel())
         case .batches:
